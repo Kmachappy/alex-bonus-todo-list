@@ -9,11 +9,22 @@
     <title>Todos</title>
 </head>
 <body>
+    <h1> The todo App</h1>
     <% todos.forEach((todo)=>{ %>
         <ul>
 
-            <li><%= todo.text %> </li>
+            <li class="<%= todo.completed ? "done":null%>"><%= todo.text %> </li>
+            <form action="/todo/<%=todo._id%>?_method=PUT" method="post">
+                <input type="submit" value="task completed" <%=todo.completed ? "disabled" : null %> >
+            
+            </form>
         </ul>
     <% }) %> 
+
+    <h2> Add a todo</h2>
+    <form action="/todo" method="post">
+        <input type="text" name="text" placeholder="todo goes here">
+        <input type="submit" value="submit">
+    </form>
 </body>
 </html>

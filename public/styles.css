@@ -1,3 +1,9 @@
 body{
     background-color: aqua;
 }
+
+
+.done{
+    color: green;
+    text-decoration: line-through;
+}
