@@ -13,7 +13,7 @@
     <% todos.forEach((todo)=>{ %>
         <ul>
 
-            <li class="<%= todo.completed ? "done":null%>"><%= todo.text %> </li>
+            <li class="<%= todo.completed ? 'done' :null%>"><%= todo.text %> </li>
             <form action="/todo/<%=todo._id%>?_method=PUT" method="post">
                 <input type="submit" value="task completed" <%=todo.completed ? "disabled" : null %> >
             

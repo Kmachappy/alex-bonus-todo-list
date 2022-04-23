@@ -8,7 +8,7 @@ const Todo = require("../models/Todo")
 // routes
 router.get("/", async (req,res)=>{
     // go get todos
-    const todos = await Todo.find({})
+    const todos = await Todo.find({}).catch((err)=>res.send(err))
     
     // render index.ejs
     res.render("index.ejs", {todos})
@@ -31,7 +31,7 @@ router.post("/", async(req,res)=>{
     //create the todo
     await Todo.create(req.body).catch((err)=>res.send(err))
     // redirect back to main page
-    res.redirect("/")
+    res.redirect("/todo")
 })
 
 router.put("/:id", async (req,res)=>{
@@ -43,7 +43,7 @@ router.put("/:id", async (req,res)=>{
     todo.completed = true
     todo.save() // save changes
     // redirect back to main page
-    res.redirect("/")
+    res.redirect("/todo")
 
 })
 
